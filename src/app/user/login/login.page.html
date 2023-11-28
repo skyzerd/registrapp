@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="navegador">
+    <ion-title color="warning">RegistrApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-img class="animated-image" src="assets/imagenes/yellow-duoc.svg"></ion-img>
+  
+      <form (ngSubmit)="login()" [formGroup]="credentials">
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input
+            type="email"
+            inputmode="email"
+            formControlName="email"
+            placeholder="usuario@email.com"
+          ></ion-input>
+          <ion-item
+            slot="error"
+            *ngIf="(email?.dirty || email?.touched) && email?.errors"
+          >Este campo no puede estar vacio</ion-item>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input
+            type="password"
+            inputmode="text"
+            formControlName="password"
+            placeholder="**********"
+          ></ion-input>
+          <ion-item
+            slot="error"
+            *ngIf="(password?.dirty || password?.touched) && password?.errors"
+          >Este campo no puede estar vacio</ion-item>
+        </ion-item>
+
+        <ion-button
+          type="submit"
+          expand="block"
+          strong="true"
+          [disabled]="credentials.invalid"
+          color="warning"
+        >Iniciar Sesión</ion-button>
+
+        <div class="ion-margin-top">
+
+          
+          <ion-button
+            type="button"
+            expand="block"
+            color="warning"
+            (click)="forgotPassword()"
+          >
+            <ion-icon name="construct-outline" slot="start"></ion-icon>
+            Recuperar contraseña
+          </ion-button>
+
+          <ion-button
+            type="button"
+            expand="block"
+            color="warning"
+            routerLink="/signup"
+            >
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            Registrarse
+          </ion-button>
+
+        </div>
+
+      </form>
+</ion-content>
